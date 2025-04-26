@@ -1,0 +1,236 @@
+:root {
+    --primary-color: #405de6;
+    --secondary-color: #e1306c;
+    --gradient-start: #405de6;
+    --gradient-middle: #5851db;
+    --gradient-end: #e1306c;
+    --light-bg: #f8f9fa;
+    --dark-text: #333;
+    --light-text: #fff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-image: linear-gradient(to right, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+    color: var(--light-text);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+header i {
+    margin-right: 10px;
+}
+
+main {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    #logs-section {
+        grid-column: span 2;
+    }
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px var(--shadow-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.2);
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #3049c5;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.delay-inputs {
+    display: flex;
+    gap: 20px;
+}
+
+.delay-inputs > div {
+    flex: 1;
+}
+
+.logs-container {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+#logs {
+    display: flex;
+    flex-direction: column;
+}
+
+#logs p {
+    margin-bottom: 5px;
+    word-break: break-word;
+    padding: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+#logs p:nth-child(odd) {
+    background-color: rgba(0,0,0,0.02);
+}
+
+.log-success {
+    color: var(--success-color);
+}
+
+.log-error {
+    color: var(--danger-color);
+}
+
+.log-warning {
+    color: var(--warning-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logged-in-as {
+    font-weight: 500;
+}
+
+.user-stats {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+}
