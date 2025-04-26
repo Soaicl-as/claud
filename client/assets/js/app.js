@@ -42,7 +42,7 @@ class InstagramBotApp {
                     ui.addLog(`Successfully logged in as ${username}`);
                     ui.showTargetSelection();
                 } else if (response.requiresChallenge) {
-                    // 2FA required
+                    // 2FA required - store current username and show verification form
                     this.currentUsername = username;
                     ui.addLog('Two-factor authentication required');
                     ui.showVerification();
