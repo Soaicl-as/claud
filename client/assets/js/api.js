@@ -26,7 +26,7 @@ class ApiClient {
             const response = await fetch(url, options);
             const result = await response.json();
             
-            if (!response.ok) {
+            if (!response.ok && !result.requiresChallenge) {
                 throw new Error(result.error || 'An error occurred');
             }
             
