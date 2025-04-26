@@ -1,5 +1,5 @@
 const { IgApiClient } = require('instagram-private-api');
-const { ToughCookieFileStore } = require('tough-cookie-filestore2');
+const FileCookieStore = require('tough-cookie-filestore2');
 const fs = require('fs');
 const path = require('path');
 
@@ -9,14 +9,19 @@ class InstagramAPI {
     this.ig = new IgApiClient();
     
     // Set up cookie storage for persistent sessions
-    const cookieStore = path.join(__dirname, '../sessions', `${username}.cookies.json`);
+    const sessionsDir = path.join(__dirname, '../sessions');
+    if (!fs.existsSync(sessionsDir)) {
+      fs.mkdirSync(sessionsDir, { recursive: true });
+    }
+    
+    const cookieStore = path.join(sessionsDir, `${username}.cookies.json`);
     
     // Create the cookie file if it doesn't exist
     if (!fs.existsSync(cookieStore)) {
       fs.writeFileSync(cookieStore, '{}');
     }
     
-    this.ig.state.cookieStore = new ToughCookieFileStore(cookieStore);
+    this.ig.state.cookieStore = new FileCookieStore(cookieStore);
     this.ig.state.generateDevice(username);
   }
 
